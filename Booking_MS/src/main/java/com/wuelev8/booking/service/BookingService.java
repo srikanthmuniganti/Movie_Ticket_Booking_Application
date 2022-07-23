@@ -7,6 +7,6 @@ public interface BookingService {
 
 	Response bookTickets(Movie movie);
 
-	Response getBookingHistory();
+	Response getBookingHistory(String bookedBy, String dateRange);
 
 }

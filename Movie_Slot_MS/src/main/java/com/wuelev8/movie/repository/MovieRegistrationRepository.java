@@ -1,15 +1,16 @@
 package com.wuelev8.movie.repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.wuelev8.movie.models.Movie;
-import com.wuelev8.movie.models.MovieAvailability;
 
+@Repository
 public interface MovieRegistrationRepository extends JpaRepository<Movie, String> {
 
-	//@Query("select * from movie where MovieName=?.MovieName")
-	//MovieAvailability checkAvailability(MovieAvailability movie);
-	
+	List<Movie> findByMovieNameAndLanguageAndStartDateTime(String movieName, String language, LocalDateTime startDateTime);
 
 }

@@ -1,16 +1,12 @@
 package com.wuelev8.booking.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.wuelev8.booking.models.Movie;
+import com.wuelev8.booking.models.Response;
 
-import com.wuelev8.booking.client.MovieRegFeignClient;
+public interface BookingService {
 
-@Service
-public class BookingService {
-	
-	@Autowired
-	MovieRegFeignClient feignClient;
-	
-	
+	Response bookTickets(Movie movie);
+
+	Response getBookingHistory();
 
 }

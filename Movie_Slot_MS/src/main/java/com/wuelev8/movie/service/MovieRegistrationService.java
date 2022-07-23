@@ -9,11 +9,12 @@ import com.wuelev8.movie.models.Response;
 import com.wuelev8.movie.repository.MovieRegistrationRepository;
 
 @Service
-public class MovieRegistrationService {
+public class MovieRegistrationService implements MovieRegService {
 
 	@Autowired
 	MovieRegistrationRepository repository;
 	
+	@Override
 	public Response addMovieSlot(Movie movie) {
 		try {
 		repository.save(movie);
@@ -25,6 +26,7 @@ public class MovieRegistrationService {
 		return new Response("Movie Slot created successfully", "201");
 	}
 
+	@Override
 	public Response checkAvailability(MovieAvailability movie) {
 		
 		//if(repository.checkAvailability(movie) == null)

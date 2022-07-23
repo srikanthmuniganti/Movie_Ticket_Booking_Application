@@ -13,4 +13,7 @@ public interface MovieRegistrationRepository extends JpaRepository<Movie, String
 
 	List<Movie> findByMovieNameAndLanguageAndStartDateTime(String movieName, String language, LocalDateTime startDateTime);
 
+	List<Movie> findByMovieNameAndMovieTheatreAddressAndStartDateTime(String movieName, String address,
+			LocalDateTime date);
+
 }

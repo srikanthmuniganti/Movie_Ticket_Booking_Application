@@ -1,5 +1,6 @@
 package com.wuelev8.movie.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -45,6 +46,12 @@ public class MovieRegistrationService implements MovieRegService {
 			}
 		}
 		return new  Response("Not Available", "404");		
+	}
+
+	@Override
+	public int totalSeats(String movieName, String address, LocalDateTime date) {
+		List<Movie> list=repository.findByMovieNameAndMovieTheatreAddressAndStartDateTime(movieName,address,date);
+		return list.get(0).getTotalSeatCount();
 	}
 
 	

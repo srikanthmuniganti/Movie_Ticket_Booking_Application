@@ -1,5 +1,7 @@
 package com.wuelev8.booking.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wuelev8.booking.models.AggregateResponse;
 import com.wuelev8.booking.models.Movie;
 import com.wuelev8.booking.models.Response;
+import com.wuelev8.booking.models.UserBookings;
 import com.wuelev8.booking.service.BookingService;
 
 @RestController
@@ -32,9 +36,16 @@ public class BookingController implements BookingInterface {
 	@Override
 	@GetMapping("/get_booking_history/{bookedBy}/{dateRange}")
 	@ResponseBody
-	public Response getBookingHistory(@PathVariable String bookedBy,@PathVariable String dateRange) {	
+	public UserBookings getBookingHistory(@PathVariable String bookedBy,@PathVariable String dateRange) {	
 		
-		return service.getBookingHistory(bookedBy, dateRange);
+		return service.getBookingHistory(bookedBy, dateRange);	
+	}
+	
+	@Override
+	@GetMapping("/aggregate_api/{moviename}/{dateRange}")
+	@ResponseBody
+	public AggregateResponse getMovieDetails(@PathVariable String moviename,@PathVariable String dateRange) {	
 		
+		return service.getMovieDetails(moviename, dateRange);	
 	}
 }
